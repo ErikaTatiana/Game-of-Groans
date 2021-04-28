@@ -11,12 +11,10 @@ public class Player {
     private Random r = new Random();
     private Scanner s = new Scanner(System.in);
 
-    //getters
     public int getPHealth() {
         return this.health;
     }
 
-    //setters
     public void setPHealth(int health) {
         this.health = health;
     }
