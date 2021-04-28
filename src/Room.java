@@ -32,13 +32,13 @@ public class Room {
                 Random random = new Random();
                 int goldDeviation = 3 - random.nextInt(6);
                 player.onLoot(goldDeviation + this.avgGoldperRoom);
-                System.out.println("You found " + goldDeviation + this.avgGoldperRoom + " gold. This gives you a total of " + player.getGold() + " gold!");
+                System.out.println("You found " + goldDeviation + this.avgGoldperRoom + " gold. This gives you a total of " + player.getPGold() + " gold!");
             }
             else {
                 System.out.println("You have found a healing elixir! ");
                 Random random = new Random();
                 player.onHeal(30);
-                System.out.println("You have gained 30 health! Your health is now: " + player.getHealth());
+                System.out.println("You have gained 30 health! Your health is now: " + player.getPHealth());
             }
         }
         else {
