@@ -79,6 +79,43 @@ public class DungeonMap {
         System.out.println("+");
 
     }
+    public void move(String direction) {
+        if(direction.equalsIgnoreCase("W")) {
+            if(this.playerYPos == 0) {
+                System.out.println("You can't move up! There is a wall!");
+            }
+            else {
+                this.playerYPos -= 1;
+            }
+        }
+        else if(direction.equalsIgnoreCase("A")) {
+            if(this.playerXPos == 0) {
+                System.out.println("You can't move Left! There is a wall!");
+            }
+            else {
+                this.playerXPos -= 1;
+            }
+        }
+        else if(direction.equalsIgnoreCase("S")) {
+            if(this.playerYPos == this.rows-1) {
+                System.out.println("You can't move Down! There is a wall!");
+            }
+            else {
+                this.playerYPos += 1;
+            }
+        }
+        else if(direction.equalsIgnoreCase("D")) {
+            if(this.playerXPos == this.columns-1) {
+                System.out.println("You can't move Right! There is a wall!");
+            }
+            else {
+                this.playerXPos += 1;
+            }
+        }
+        else {
+            System.out.println("Input not recognized");
+        }
+    }
 
     public void moveRight() {
         int currentX = this.playerXPos;
