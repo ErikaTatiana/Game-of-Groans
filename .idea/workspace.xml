@@ -15,10 +15,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
+            <state relative-caret-position="782">
+              <caret line="117" column="34" selection-start-line="117" selection-start-column="34" selection-end-line="117" selection-end-column="34" />
               <folding>
-                <element signature="e#3066#3067#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+                <element signature="e#411#412#0" expanded="true" />
+                <element signature="e#453#454#0" expanded="true" />
+                <element signature="e#489#490#0" expanded="true" />
+                <element signature="e#518#519#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#588#589#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#685#686#0" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#763#764#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#843#844#0" expanded="true" />
+                <element signature="e#900#901#0" expanded="true" />
+                <element signature="e#948#949#0" expanded="true" />
+                <element signature="e#986#987#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1079#1080#0" expanded="true" />
+                <element signature="e#1125#1126#0" expanded="true" />
+                <element signature="e#1217#1218#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1296#1297#0" expanded="true" />
+                <element signature="e#1338#1339#0" expanded="true" />
+                <element signature="e#3866#3867#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -361,10 +385,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
+        <state relative-caret-position="782">
+          <caret line="117" column="34" selection-start-line="117" selection-start-column="34" selection-end-line="117" selection-end-column="34" />
           <folding>
-            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#3866#3867#0" expanded="true" />
           </folding>
         </state>
       </provider>

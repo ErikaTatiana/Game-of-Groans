@@ -1,11 +1,17 @@
 import java.util.Random;
 
 public class Monster {
+    /**
+     * private variables
+     */
     private int health;
     private int damage;
     private String monsterType;
     private Random r = new Random();
 
+    /**
+     * getters and setters
+     */
     public void setMDamage(int damage) {
         this.damage = damage;
     }
@@ -30,6 +36,9 @@ public class Monster {
         return monsterType;
     }
 
+    /**
+     * random choice of what kind of monster appears
+     */
     public void MonsterChoice() {
         int rnum = r.nextInt(4);
         if (rnum == 0) {
@@ -52,13 +61,18 @@ public class Monster {
 
     }
 
-    /* Hits the targeted Player */
+    /**
+     * Hits the targeted Player
+     * @param target which player is being targetted
+     */
     public void attack(Player target) {
         target.setPHealth(target.getPHealth() - getMDamage());
     }
 
-    /* Removes health from this Monster
-    when hit by a Player */
+    /**
+     * Removes health from this Monster when hit by a Player
+     * @param damage damage taken in by monster
+     */
     public void onHit(int damage) {
         setMHealth(getMHealth() - damage);
     }
