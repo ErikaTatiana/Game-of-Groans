@@ -51,12 +51,12 @@ public class Room {
     // Setup for new Rooms
     public String randomEncounter()  {
         Random random = new Random();
-        int randomNumber = random.nextInt(1);
+        int randomNumber = random.nextInt(2);
         if(randomNumber == 0) {
             return "Monster";
         }
         else {
-            randomNumber = random.nextInt(1);
+            randomNumber = random.nextInt(2);
             if (randomNumber == 0) {
                 return "Loot";
             } else {

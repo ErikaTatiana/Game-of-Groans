@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="66c9bf19-063c-4ea0-809a-4bc831a64f64" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Monster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
     </list>
@@ -165,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619667817966</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added a bunch of stuff">
+      <created>1619669216457</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1619669216457</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">

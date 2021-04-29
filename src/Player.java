@@ -148,6 +148,6 @@ public class Player {
      * @param gold determined by loot
      */
     public void onLoot(int gold) {
-        setPGold((int) getPLootModifier() * r.nextInt());
+        setPGold((int) getPLootModifier() * gold);
     }
 }
