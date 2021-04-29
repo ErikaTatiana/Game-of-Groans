@@ -68,13 +68,13 @@ public class Player {
             setPLootModifier(1.0);
             setPDamage(15);
             setPGold(0);
-            setPlayerClass("Warrior");
+            setPlayerClass("W");
         } else if (playerClass == 2) {
             setPHealth(70);
             setPLootModifier(1.2);
             setPDamage(10);
             setPGold(0);
-            setPlayerClass("Thief");
+            setPlayerClass("T");
         }
 
     }
