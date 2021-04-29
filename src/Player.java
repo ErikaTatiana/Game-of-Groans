@@ -66,7 +66,7 @@ public class Player {
     }
 
     /**
-     * Intro Scne is just the first 'page' to set the players class and thus the variables for the rest of the game
+     * Intro Secne is just the first 'page' to set the players class and thus the variables for the rest of the game
      */
     public void introScene() {
         System.out.println("=================================================");
@@ -148,6 +148,9 @@ public class Player {
      * @param gold determined by loot
      */
     public void onLoot(int gold) {
-        setPGold((int) getPLootModifier() * gold);
+        setPGold(((int) getPLootModifier() * gold)+getPGold());
+        if(getPGold() >= 100) {
+            System.out.print("Congratulations, you have successfully exited the dungeon!");
+        }
     }
 }

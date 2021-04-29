@@ -62,8 +62,9 @@ public class Monster {
      * @param target which player is being targetted
      */
     public void attack(Player target) {
-        System.out.println("The " + this.monsterType + " attacks and hits you for " + getMDamage() + " damage!");
-        target.onHit(getMDamage());
+        int damage = r.nextInt(getMDamage()/2)+(getMDamage()/2);
+        System.out.println("The " + this.monsterType + " attacks and hits you for " + damage + " damage!");
+        target.onHit(damage);
     }
 
     /**

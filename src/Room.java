@@ -12,7 +12,7 @@ public class Room {
     public Room(int totalRooms) {
         this.visited = false;
         //This is how much gold per room will get you 100 gold if you get gold in 1/5 of the rooms
-        this.avgGoldperRoom = (100/(totalRooms/5));
+        this.avgGoldperRoom = (200/(totalRooms/5));
     }
 
     /* Handles encounter logic when a Player
@@ -30,13 +30,12 @@ public class Room {
             else if(encounter.equals("Loot")) {
                 System.out.println("You have found gold!");
                 Random random = new Random();
-                int goldDeviation = 3 - random.nextInt(6);
+                int goldDeviation = 2 - random.nextInt(4);
                 player.onLoot(goldDeviation + this.avgGoldperRoom);
-                System.out.println("You found " + goldDeviation + this.avgGoldperRoom + " gold. This gives you a total of " + player.getPGold() + " gold!");
+                System.out.println("You found " + (goldDeviation + this.avgGoldperRoom) + " gold. This gives you a total of " + player.getPGold() + " gold!");
             }
             else {
                 System.out.println("You have found a healing elixir! ");
-                Random random = new Random();
                 player.onHeal(30);
                 System.out.println("You have gained 30 health! Your health is now: " + player.getPHealth());
             }
@@ -73,7 +72,7 @@ public class Room {
             String decision = scanner.nextLine();
             if (decision.equalsIgnoreCase("r")) {
                 monster.attack(player);
-
+                System.out.println("You got away safely.");
             } else if (decision.equalsIgnoreCase("f")) {
                 //fight sequence
                 if (player.getPHealth() > 0 && monster.getMHealth() > 0) {
