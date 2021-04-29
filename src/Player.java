@@ -10,6 +10,7 @@ public class Player {
     private double lootModifier;
     private Random r = new Random();
     private Scanner s = new Scanner(System.in);
+    int maxHealth = 0;
 
     public int getPHealth() {
         return this.health;
@@ -69,12 +70,14 @@ public class Player {
             setPDamage(15);
             setPGold(0);
             setPlayerClass("W");
+            maxHealth = 100;
         } else if (playerClass == 2) {
             setPHealth(70);
             setPLootModifier(1.2);
             setPDamage(10);
             setPGold(0);
             setPlayerClass("T");
+            maxHealth = 70;
         }
 
     }
@@ -87,12 +90,21 @@ public class Player {
     /* Removes health from this Player
     when hit by a Monster */
     public void onHit(int damage) {
-        setPHealth(getPHealth() - damage);
+        if ((getPHealth() + health) < 0) {
+            setPHealth(0);
+        } else {
+            setPHealth(getPHealth() - damage);
+        }
+
     }
 
     /* Adds health to this Player when healed */
     public void onHeal(int health) {
-        setPHealth(getPHealth() + health);
+        if ((getPHealth() + health) >= maxHealth) {
+            setPHealth(maxHealth);
+        } else {
+            setPHealth(getPHealth() + health);
+        }
     }
 
     /* Adds gold to this Player when obtained */
