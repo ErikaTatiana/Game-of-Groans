@@ -5,23 +5,23 @@ public class DungeonMap {
     private Room[][] rooms;
     private int rows;
     private int columns;
-    private int playerXPos = 0;
-    private int playerYPos = 0;
+    private int playerRow = 0;
+    private int playerCol = 0;
 
     /* Reference to the Player in the dungeon */
     private Player player;
 
-    public int getPlayerXPos() {
-        return this.playerXPos;
+    public int getPlayerCol() {
+        return this.playerCol;
     }
-    public int getPlayerYPos() {
-        return this.playerYPos;
+    public int getPlayerRow() {
+        return this.playerRow;
     }
-    public void setPlayerXPos(int xPos) {
-        this.playerXPos = xPos;
+    public void setPlayerCol(int xPos) {
+        this.playerCol = xPos;
     }
-    public void setPlayerYPos(int yPos) {
-        this.playerYPos = yPos;
+    public void setPlayerRow(int yPos) {
+        this.playerRow = yPos;
     }
 
     /* Initializes the rooms and shared Player reference */
@@ -36,7 +36,7 @@ public class DungeonMap {
                 rooms[r][c] = new Room((this.rows)*(this.columns));
             }
         }
-        //Does the room we add the player in start a new encounter or is that marked as visited?
+        rooms[getPlayerRow()][getPlayerCol()].setVisited();
     }
 
     /* Displays the dungeon's rooms, walls,
@@ -54,15 +54,15 @@ public class DungeonMap {
         for(int r = 0; r < this.rows; r++) {
             System.out.print("|");
             for(int c = 0; c < this.columns; c++) {
-                if (rooms[r][c].hasVisited()) {
+                if(r == this.playerRow && c == this.playerCol) {
+                    // Player position
+                    System.out.print(player.getPlayerClass());
+                }
+                else if (rooms[r][c].hasVisited()) {
                     //Visited room
                     System.out.print("*");
                 }
-                else if(r == this.playerYPos && c == this.playerXPos) {
-                    // Player position
-                    System.out.print(player.getPlayerClass());
-                    // Not sure if the getClass method is going to give the symbol or the name of the class
-                }
+
                 else {
                     //unvisited room
                     System.out.print(" ");
@@ -81,40 +81,40 @@ public class DungeonMap {
     }
     public void move(String direction) {
         if(direction.equalsIgnoreCase("W")) {
-            if(this.playerYPos == 0) {
+            if(this.playerRow == 0) {
                 System.out.println("You can't move up! There is a wall!");
             }
             else {
-                this.playerYPos -= 1;
+                setPlayerRow(this.getPlayerRow()-1);
             }
         }
         else if(direction.equalsIgnoreCase("A")) {
-            if(this.playerXPos == 0) {
+            if(this.playerCol == 0) {
                 System.out.println("You can't move Left! There is a wall!");
             }
             else {
-                this.playerXPos -= 1;
+                setPlayerCol(getPlayerCol()-1);
             }
         }
         else if(direction.equalsIgnoreCase("S")) {
-            if(this.playerYPos == this.rows-1) {
+            if(this.playerRow == this.rows-1) {
                 System.out.println("You can't move Down! There is a wall!");
             }
             else {
-                this.playerYPos += 1;
+                setPlayerRow(getPlayerRow()+1);
             }
         }
         else if(direction.equalsIgnoreCase("D")) {
-            if(this.playerXPos == this.columns-1) {
+            if(this.playerCol == this.columns-1) {
                 System.out.println("You can't move Right! There is a wall!");
             }
             else {
-                this.playerXPos += 1;
+                setPlayerCol(getPlayerCol()+1);
             }
         }
         else {
             System.out.println("Input not recognized");
         }
-        rooms[this.playerXPos][this.playerXPos].enter(this.player);
+        rooms[this.playerRow][this.playerCol].enter(this.player);
     }
 }

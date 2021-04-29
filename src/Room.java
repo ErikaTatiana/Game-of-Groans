@@ -69,7 +69,7 @@ public class Room {
     public void fight(Player player, Monster monster) {
         Scanner scanner = new Scanner(System.in);
         if(player.getPHealth() > 0 && monster.getMHealth() > 0) {
-            System.out.println(" Would you like to run or fight the " + monster.getMonsterType() + " ? ([R] or [F])");
+            System.out.println("Would you like to run or fight the " + monster.getMonsterType() + " ? ([R] or [F])");
             String decision = scanner.nextLine();
             if (decision.equalsIgnoreCase("r")) {
                 monster.attack(player);

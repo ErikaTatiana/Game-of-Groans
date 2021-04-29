@@ -74,13 +74,13 @@ public class Player {
         System.out.println("There are monsters, bags of gold, and healing elixirs in each room.");
         System.out.println("Can you find 100 gold pieces and pay the evil professor to let you out before the monsters kill you?");
         System.out.println("Select your class:");
-        System.out.println("[1] Warrior");
-        System.out.println("[2] Thief");
+        System.out.println("[W] Warrior");
+        System.out.println("[T] Thief");
         System.out.print("==> ");
-        int playerClass = s.nextInt();
+        String playerClass = s.nextLine();
         System.out.println("=================================================");
 
-        if (playerClass == 1) {
+        if (playerClass.equalsIgnoreCase("w")) {
             setPHealth(100);
             setPLootModifier(1.0);
             setPDamage(15);
@@ -88,7 +88,7 @@ public class Player {
             setPlayerClass("W");
             setMaxHealth(100);
             setPHealth(getMaxHealth());
-        } else if (playerClass == 2) {
+        } else if (playerClass.equalsIgnoreCase("t")) {
             setPHealth(70);
             setPLootModifier(1.2);
             setPDamage(10);
@@ -96,6 +96,11 @@ public class Player {
             setPlayerClass("T");
             setMaxHealth(70);
             setPHealth(getMaxHealth());
+        }
+        else {
+            /** This is the easy way of dealing with wrong input lol." **/
+            System.out.println("Input not recognized. Game over.");
+            System.exit(0);
         }
 
     }
