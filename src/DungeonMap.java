@@ -1,4 +1,4 @@
-/*Contains the Rooms in the dungeon
+/**Contains the Rooms in the dungeon
         and logic for Player movement **/
 public class DungeonMap {
     /* Rooms in the dungeon */
@@ -8,7 +8,7 @@ public class DungeonMap {
     private int playerRow = 0;
     private int playerCol = 0;
 
-    /* Reference to the Player in the dungeon */
+    /** Reference to the Player in the dungeon */
     private Player player;
 
     public int getPlayerCol() {
@@ -24,7 +24,7 @@ public class DungeonMap {
         this.playerRow = yPos;
     }
 
-    /* Initializes the rooms and shared Player reference */
+    /** Initializes the rooms and shared Player reference */
     public DungeonMap (int rows, int columns, Player player){
         rooms = new Room[rows][columns];
         this.rows = rows;
@@ -39,7 +39,7 @@ public class DungeonMap {
         rooms[getPlayerRow()][getPlayerCol()].setVisited();
     }
 
-    /* Displays the dungeon's rooms, walls,
+    /** Displays the dungeon's rooms, walls,
     and player's current location */
     public void print() {
 
@@ -79,6 +79,11 @@ public class DungeonMap {
         System.out.println("+");
 
     }
+
+    /**
+     * Player movement
+     * @param direction which way the player wishes to go
+     */
     public void move(String direction) {
         if(direction.equalsIgnoreCase("W")) {
             if(this.playerRow == 0) {

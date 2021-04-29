@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-/* Represents a Room in the Dungeon, where
+/** Represents a Room in the Dungeon, where
 encounters with Monsters and Loot occur */
 public class Room {
     /* Indicates whether or not this Room
@@ -15,7 +15,7 @@ public class Room {
         this.avgGoldperRoom = (200/(totalRooms/5));
     }
 
-    /* Handles encounter logic when a Player
+    /** Handles encounter logic when a Player
     enters this Room. Includes combat resolution
     and obtaining loot. */
     public void enter(Player player) {

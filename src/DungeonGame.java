@@ -1,22 +1,22 @@
 import java.util.Scanner;
 
 public class DungeonGame {
-    /* Reference to the DungeonMap the Player is in */
+    /** Reference to the DungeonMap the Player is in */
     private DungeonMap map;
 
-    /* Reference to the Player in the dungeon */
+    /** Reference to the Player in the dungeon */
     private Player player;
 
-    /* Initializes the size of the dungeon */
+    /** Initializes the size of the dungeon */
 	public DungeonGame(int rows, int columns) {
 	    Player player1 = new Player();
 	    this.player = player1;
         this.map = new DungeonMap(rows,columns, player1);
 	}
 	
-	/* Main loop of the game, which handles
-	non-combat related user input. Continues
-	until the Player either wins or loses. */
+	/** Main loop of the game, which handles non-combat related
+     * user input. Continues until the Player either wins or loses.
+     */
     public void play() {
         this.player.introScene();
         while(this.player.getPHealth() > 0) {
