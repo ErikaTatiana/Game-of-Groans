@@ -16,6 +16,7 @@ public class DungeonGame {
 	non-combat related user input. Continues
 	until the Player either wins or loses. */
     public void play() {
-
+        Player player1 = new Player();
+        DungeonMap map = new DungeonMap(10,10, player1);
     }
 }

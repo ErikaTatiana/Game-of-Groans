@@ -94,4 +94,8 @@ public class Room {
     public boolean hasVisited() {
         return this.visited;
     }
+
+    public void setVisited() {
+        this.visited = true;
+    }
 }

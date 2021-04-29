@@ -58,7 +58,7 @@ public class DungeonMap {
                     //Visited room
                     System.out.print("*");
                 }
-                else if(r == this.playerXPos && c == this.playerYPos) {
+                else if(r == this.playerYPos && c == this.playerXPos) {
                     // Player position
                     System.out.print(player.getPlayerClass());
                     // Not sure if the getClass method is going to give the symbol or the name of the class
@@ -80,5 +80,31 @@ public class DungeonMap {
 
     }
 
-    //TODO: method(s) to move player
+    public void moveRight() {
+        int currentX = this.playerXPos;
+        int currentY = this.playerYPos;
+        rooms[this.playerXPos][this.playerYPos].setVisited();
+        this.playerXPos += 1;
+    }
+
+    public void moveLeft() {
+        int currentX = this.playerXPos;
+        int currentY = this.playerYPos;
+        rooms[this.playerXPos][this.playerYPos].setVisited();
+        this.playerXPos -= 1;
+    }
+
+    public void moveUp() {
+        int currentX = this.playerXPos;
+        int currentY = this.playerYPos;
+        rooms[this.playerXPos][this.playerYPos].setVisited();
+        this.playerYPos += 1;
+    }
+
+    public void moveDown() {
+        int currentX = this.playerXPos;
+        int currentY = this.playerYPos;
+        rooms[this.playerXPos][this.playerYPos].setVisited();
+        this.playerYPos -= 1;
+    }
 }
