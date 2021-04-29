@@ -9,14 +9,17 @@ public class DungeonGame {
 
     /* Initializes the size of the dungeon */
 	public DungeonGame(int rows, int columns) {
-		
+	    Player player1 = new Player();
+	    this.player = player1;
+        DungeonMap map = new DungeonMap(10,10, this.player);
 	}
 	
 	/* Main loop of the game, which handles
 	non-combat related user input. Continues
 	until the Player either wins or loses. */
     public void play() {
-        Player player1 = new Player();
-        DungeonMap map = new DungeonMap(10,10, player1);
+        this.player.introScene();
+        System.out.print("");
+
     }
 }

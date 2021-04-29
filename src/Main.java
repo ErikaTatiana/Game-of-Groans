@@ -2,6 +2,6 @@
 public class Main {
 	/* Entry point of the application */
     public static void main(String[] args) {
-//Test if I can push stuff
+        DungeonGame game = new DungeonGame(10,10);
     }
 }
