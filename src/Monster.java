@@ -14,10 +14,6 @@ public class Monster {
         this.health = health;
     }
 
-    public void setMonsterType(String monsterType) {
-        this.monsterType = monsterType;
-    }
-
     public int getMDamage() {
         return damage;
     }
@@ -30,7 +26,7 @@ public class Monster {
         return monsterType;
     }
 
-    public void MonsterChoice() {
+    public Monster() {
         int rnum = r.nextInt(4);
         if (rnum == 0) {
             this.monsterType = "Goblin";
@@ -54,12 +50,16 @@ public class Monster {
 
     /* Hits the targeted Player */
     public void attack(Player target) {
-        target.setPHealth(target.getPHealth() - getMDamage());
+        System.out.println("The " + this.monsterType + " attacks and hits you for " + getMDamage() + " damage!");
+        target.onHit(getMDamage());
     }
 
     /* Removes health from this Monster
     when hit by a Player */
     public void onHit(int damage) {
         setMHealth(getMHealth() - damage);
+        if(getMHealth() <= 0) {
+            System.out.println("The " + this.monsterType+ " dies!");
+        }
     }
 }

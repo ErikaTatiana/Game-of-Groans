@@ -42,8 +42,9 @@ public class Room {
             }
         }
         else {
-            System.out.print("You have visited this room before.");
+            System.out.println("You have visited this room before.");
         }
+        this.setVisited();
 
     }
 
@@ -67,25 +68,25 @@ public class Room {
     // Fight sequence
     public void fight(Player player, Monster monster) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Would you like to run or fight the " + monster.getMonsterType() + " ? ([R] or [F])");
-        String decision = scanner.nextLine();
-        if(decision.equalsIgnoreCase("r")) {
-            monster.attack(player);
-        }
-        else if(decision.equalsIgnoreCase("f")) {
-            //fight sequence
-            if(player.getPHealth() > 0 && monster.getMHealth() > 0) {
+        if(player.getPHealth() > 0 && monster.getMHealth() > 0) {
+            System.out.println(" Would you like to run or fight the " + monster.getMonsterType() + " ? ([R] or [F])");
+            String decision = scanner.nextLine();
+            if (decision.equalsIgnoreCase("r")) {
                 monster.attack(player);
-                System.out.println("----------");
-                if(player.getPHealth() > 0) {
-                    player.attack(monster);
-                    fight(player, monster);
+
+            } else if (decision.equalsIgnoreCase("f")) {
+                //fight sequence
+                if (player.getPHealth() > 0 && monster.getMHealth() > 0) {
+                    monster.attack(player);
+                    if (player.getPHealth() > 0) {
+                        player.attack(monster);
+                        fight(player, monster);
+                    }
                 }
+            } else {
+                System.out.print("Input not recognized, please try again.");
+                this.fight(player, monster);
             }
-        }
-        else {
-            System.out.print("Input not recognized, please try again.");
-            this.fight(player, monster);
         }
     }
 

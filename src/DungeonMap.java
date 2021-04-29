@@ -115,33 +115,6 @@ public class DungeonMap {
         else {
             System.out.println("Input not recognized");
         }
-    }
-
-    public void moveRight() {
-        int currentX = this.playerXPos;
-        int currentY = this.playerYPos;
-        rooms[this.playerXPos][this.playerYPos].setVisited();
-        this.playerXPos += 1;
-    }
-
-    public void moveLeft() {
-        int currentX = this.playerXPos;
-        int currentY = this.playerYPos;
-        rooms[this.playerXPos][this.playerYPos].setVisited();
-        this.playerXPos -= 1;
-    }
-
-    public void moveUp() {
-        int currentX = this.playerXPos;
-        int currentY = this.playerYPos;
-        rooms[this.playerXPos][this.playerYPos].setVisited();
-        this.playerYPos += 1;
-    }
-
-    public void moveDown() {
-        int currentX = this.playerXPos;
-        int currentY = this.playerYPos;
-        rooms[this.playerXPos][this.playerYPos].setVisited();
-        this.playerYPos -= 1;
+        rooms[this.playerXPos][this.playerXPos].enter(this.player);
     }
 }

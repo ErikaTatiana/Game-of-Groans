@@ -27,6 +27,7 @@ public class DungeonGame {
             System.out.println("Select a door: [W] up, [S] down, [A] left, [D] right ==> ");
             String direction = scanner.nextLine();
             this.map.move(direction);
+
         }
 
 

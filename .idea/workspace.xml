@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66c9bf19-063c-4ea0-809a-4bc831a64f64" name="Default Changelist" comment="" />
+    <list default="true" id="66c9bf19-063c-4ea0-809a-4bc831a64f64" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Monster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,82 +21,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
-              <folding>
-                <element signature="e#3066#3067#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Monster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Room.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3387#3388#0" expanded="true" />
-                <element signature="e#3422#3423#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret column="2" selection-start-column="2" selection-end-column="2" />
-              <folding>
-                <element signature="e#382#383#0" expanded="true" />
-                <element signature="e#420#421#0" expanded="true" />
-                <element signature="e#453#454#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#533#534#0" expanded="true" />
-                <element signature="e#571#572#0" expanded="true" />
-                <element signature="e#613#614#0" expanded="true" />
-                <element signature="e#651#652#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -150,18 +86,6 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -176,7 +100,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -270,14 +194,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -296,6 +213,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />

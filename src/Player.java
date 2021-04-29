@@ -84,18 +84,17 @@ public class Player {
 
     /* Hits the targeted Monster */
     public void attack(Monster target) {
-        target.setMHealth(target.getMHealth() - getPDamage());
+        System.out.println("You attack and hit " + target.getMonsterType() + " for " + getPDamage() + " damage!");
+        target.onHit(getPDamage());
     }
 
     /* Removes health from this Player
     when hit by a Monster */
     public void onHit(int damage) {
-        if ((getPHealth() + health) < 0) {
-            setPHealth(0);
-        } else {
-            setPHealth(getPHealth() - damage);
+        setPHealth(getPHealth() - damage);
+        if(getPHealth() <= 0) {
+            System.out.println("You have died! Game over! \n =================================================");
         }
-
     }
 
     /* Adds health to this Player when healed */
