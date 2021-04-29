@@ -11,7 +11,7 @@ public class DungeonGame {
 	public DungeonGame(int rows, int columns) {
 	    Player player1 = new Player();
 	    this.player = player1;
-        this.map = new DungeonMap(10,10, this.player);
+        this.map = new DungeonMap(rows,columns, player1);
 	}
 	
 	/* Main loop of the game, which handles
