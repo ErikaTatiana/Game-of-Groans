@@ -19,14 +19,15 @@ public class DungeonGame {
 	until the Player either wins or loses. */
     public void play() {
         this.player.introScene();
-        this.map.print();
-        System.out.println("GP = " + this.player.getPGold());
-        System.out.println("HP = " + this.player.getPHealth());
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Select a door: [W] up, [S] down, [A] left, [D] right ==> ");
-        String direction = scanner.nextLine();
-        this.map.move(direction);
-
+        while(this.player.getPHealth() > 0) {
+            this.map.print();
+            System.out.println("GP = " + this.player.getPGold());
+            System.out.println("HP = " + this.player.getPHealth());
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Select a door: [W] up, [S] down, [A] left, [D] right ==> ");
+            String direction = scanner.nextLine();
+            this.map.move(direction);
+        }
 
 
 
