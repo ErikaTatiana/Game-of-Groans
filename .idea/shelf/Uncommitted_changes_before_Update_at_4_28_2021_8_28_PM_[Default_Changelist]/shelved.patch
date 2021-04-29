@@ -1,0 +1,246 @@
+Index: src/Monster.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Random;\r\n\r\npublic class Monster {\r\n    private int health;\r\n    private int damage;\r\n    private String monsterType;\r\n    private Random r = new Random();\r\n\r\n    public void setMDamage(int damage) {\r\n        this.damage = damage;\r\n    }\r\n\r\n    public void setMHealth(int health) {\r\n        this.health = health;\r\n    }\r\n\r\n    public void setMonsterType(String monsterType) {\r\n        this.monsterType = monsterType;\r\n    }\r\n\r\n    public int getMDamage() {\r\n        return damage;\r\n    }\r\n\r\n    public int getMHealth() {\r\n        return health;\r\n    }\r\n\r\n    public String getMonsterType() {\r\n        return monsterType;\r\n    }\r\n\r\n    public void MonsterChoice() {\r\n        int rnum = r.nextInt(4);\r\n        if (rnum == 0) {\r\n            this.monsterType = \"Goblin\";\r\n            setMDamage(10);\r\n            setMHealth(6);\r\n        } else if (rnum == 1) {\r\n            this.monsterType = \"Zombie\";\r\n            setMDamage(15);\r\n            setMHealth(12);\r\n        } else if (rnum == 2) {\r\n            this.monsterType = \"Orc\";\r\n            setMDamage(20);\r\n            setMHealth(18);\r\n        } else if (rnum == 3) {\r\n            this.monsterType = \"Deneke\";\r\n            setMDamage(5);\r\n            setMHealth(55);\r\n        }\r\n\r\n    }\r\n\r\n    /* Hits the targeted Player */\r\n    public void attack(Player target) {\r\n        target.setPHealth(target.getPHealth() - getMDamage());\r\n    }\r\n\r\n    /* Removes health from this Monster\r\n    when hit by a Player */\r\n    public void onHit(int damage) {\r\n        setMHealth(getMHealth() - damage);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Monster.java b/src/Monster.java
+--- a/src/Monster.java	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/src/Monster.java	(date 1619666651455)
+@@ -54,6 +54,7 @@
+ 
+     /* Hits the targeted Player */
+     public void attack(Player target) {
++        System.out.println("The " + this.monsterType + " attacks and hits you for " + getMDamage() + " damage!");
+         target.setPHealth(target.getPHealth() - getMDamage());
+     }
+ 
+@@ -61,5 +62,8 @@
+     when hit by a Player */
+     public void onHit(int damage) {
+         setMHealth(getMHealth() - damage);
++        if(getMHealth() <= 0) {
++            System.out.println(" The " + this.monsterType+ " dies!");
++        }
+     }
+ }
+Index: src/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Random;\r\nimport java.util.Scanner;\r\n\r\npublic class Player {\r\n    /* Private Variables*/\r\n    private int health;\r\n    private int gold;\r\n    private int damage;\r\n    private String playerClass;\r\n    private double lootModifier;\r\n    private Random r = new Random();\r\n    private Scanner s = new Scanner(System.in);\r\n\r\n    public int getPHealth() {\r\n        return this.health;\r\n    }\r\n\r\n    public void setPHealth(int health) {\r\n        this.health = health;\r\n    }\r\n\r\n    public int getPGold() {\r\n        return this.gold;\r\n    }\r\n\r\n    public void setPGold(int gold) {\r\n        this.gold = gold;\r\n    }\r\n\r\n    public int getPDamage() {\r\n        return this.damage;\r\n    }\r\n\r\n    public void setPDamage(int damage) {\r\n        this.damage = damage;\r\n    }\r\n\r\n    public double getPLootModifier() {\r\n        return this.lootModifier;\r\n    }\r\n\r\n    public void setPLootModifier(double lootModifier) {\r\n        this.lootModifier = lootModifier;\r\n    }\r\n\r\n    public String getPlayerClass() {\r\n        return this.playerClass;\r\n    }\r\n\r\n    public void setPlayerClass(String playerClass) {\r\n        this.playerClass = playerClass;\r\n    }\r\n\r\n    public void introScene() {\r\n        System.out.println(\"=================================================\");\r\n        System.out.println(\"you are in a dungeon!!\");\r\n        System.out.println(\"There are monsters, bags of gold, and healing elixirs in each room.\");\r\n        System.out.println(\"Can you find 100 gold pieces and pay the evil professor to let you out before the monsters kill you?\");\r\n        System.out.println(\"Select your class:\");\r\n        System.out.println(\"[1] Warrior\");\r\n        System.out.println(\"[2] Thief\");\r\n        System.out.print(\"==> \");\r\n        int playerClass = s.nextInt();\r\n        System.out.println(\"=================================================\");\r\n\r\n        if (playerClass == 1) {\r\n            setPHealth(100);\r\n            setPLootModifier(1.0);\r\n            setPDamage(15);\r\n            setPGold(0);\r\n            setPlayerClass(\"Warrior\");\r\n        } else if (playerClass == 2) {\r\n            setPHealth(70);\r\n            setPLootModifier(1.2);\r\n            setPDamage(10);\r\n            setPGold(0);\r\n            setPlayerClass(\"Thief\");\r\n        }\r\n\r\n    }\r\n\r\n    /* Hits the targeted Monster */\r\n    public void attack(Monster target) {\r\n        target.setMHealth(target.getMHealth() - getPDamage());\r\n    }\r\n\r\n    /* Removes health from this Player\r\n    when hit by a Monster */\r\n    public void onHit(int damage) {\r\n        setPHealth(getPHealth() - damage);\r\n    }\r\n\r\n    /* Adds health to this Player when healed */\r\n    public void onHeal(int health) {\r\n        setPHealth(getPHealth() + health);\r\n    }\r\n\r\n    /* Adds gold to this Player when obtained */\r\n    public void onLoot(int gold) {\r\n        setPGold((int) getPLootModifier() * r.nextInt());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Player.java b/src/Player.java
+--- a/src/Player.java	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/src/Player.java	(date 1619666876441)
+@@ -81,6 +81,7 @@
+ 
+     /* Hits the targeted Monster */
+     public void attack(Monster target) {
++        System.out.println("You attack and hit " + target.getMonsterType() + " for " + getPDamage() + " damage!");
+         target.setMHealth(target.getMHealth() - getPDamage());
+     }
+ 
+@@ -88,6 +89,9 @@
+     when hit by a Monster */
+     public void onHit(int damage) {
+         setPHealth(getPHealth() - damage);
++        if(getPHealth() <= 0) {
++            System.out.println("You have died! Game over! \n =================================================");
++        }
+     }
+ 
+     /* Adds health to this Player when healed */
+Index: src/DungeonMap.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*Contains the Rooms in the dungeon\r\n        and logic for Player movement **/\r\npublic class DungeonMap {\r\n    /* Rooms in the dungeon */\r\n    private Room[][] rooms;\r\n    private int rows;\r\n    private int columns;\r\n    private int playerXPos = 0;\r\n    private int playerYPos = 0;\r\n\r\n    /* Reference to the Player in the dungeon */\r\n    private Player player;\r\n\r\n    public int getPlayerXPos() {\r\n        return this.playerXPos;\r\n    }\r\n    public int getPlayerYPos() {\r\n        return this.playerYPos;\r\n    }\r\n    public void setPlayerXPos(int xPos) {\r\n        this.playerXPos = xPos;\r\n    }\r\n    public void setPlayerYPos(int yPos) {\r\n        this.playerYPos = yPos;\r\n    }\r\n\r\n    /* Initializes the rooms and shared Player reference */\r\n    public DungeonMap (int rows, int columns, Player player){\r\n        rooms = new Room[rows][columns];\r\n        this.rows = rows;\r\n        this.columns = columns;\r\n        this.player = player;\r\n        // New rooms for each row and column\r\n        for(int r = 0; r < rows; r++) {\r\n            for(int c = 0; c < columns; c++) {\r\n                rooms[r][c] = new Room((this.rows)*(this.columns));\r\n            }\r\n        }\r\n        //Does the room we add the player in start a new encounter or is that marked as visited?\r\n    }\r\n\r\n    /* Displays the dungeon's rooms, walls,\r\n    and player's current location */\r\n    public void print() {\r\n\r\n        //Top Walls\r\n        System.out.print(\"+\");\r\n        for(int i = 0; i < this.rows; i++){\r\n            System.out.print(\"-\");\r\n        }\r\n        System.out.println(\"+\");\r\n\r\n        //Side walls and Rooms\r\n        for(int r = 0; r < this.rows; r++) {\r\n            System.out.print(\"|\");\r\n            for(int c = 0; c < this.columns; c++) {\r\n                if (rooms[r][c].hasVisited()) {\r\n                    //Visited room\r\n                    System.out.print(\"*\");\r\n                }\r\n                else if(r == this.playerYPos && c == this.playerXPos) {\r\n                    // Player position\r\n                    System.out.print(player.getPlayerClass());\r\n                    // Not sure if the getClass method is going to give the symbol or the name of the class\r\n                }\r\n                else {\r\n                    //unvisited room\r\n                    System.out.print(\" \");\r\n                }\r\n            }\r\n            System.out.println(\"|\");\r\n        }\r\n\r\n        // Bottom Walls\r\n        System.out.print(\"+\");\r\n        for(int i = 0; i < this.rows; i++){\r\n            System.out.print(\"-\");\r\n        }\r\n        System.out.println(\"+\");\r\n\r\n    }\r\n    public void move(String direction) {\r\n        if(direction.equalsIgnoreCase(\"W\")) {\r\n            if(this.playerYPos == 0) {\r\n                System.out.println(\"You can't move up! There is a wall!\");\r\n            }\r\n            else {\r\n                this.playerYPos -= 1;\r\n            }\r\n        }\r\n        else if(direction.equalsIgnoreCase(\"A\")) {\r\n            if(this.playerXPos == 0) {\r\n                System.out.println(\"You can't move Left! There is a wall!\");\r\n            }\r\n            else {\r\n                this.playerXPos -= 1;\r\n            }\r\n        }\r\n        else if(direction.equalsIgnoreCase(\"S\")) {\r\n            if(this.playerYPos == this.rows-1) {\r\n                System.out.println(\"You can't move Down! There is a wall!\");\r\n            }\r\n            else {\r\n                this.playerYPos += 1;\r\n            }\r\n        }\r\n        else if(direction.equalsIgnoreCase(\"D\")) {\r\n            if(this.playerXPos == this.columns-1) {\r\n                System.out.println(\"You can't move Right! There is a wall!\");\r\n            }\r\n            else {\r\n                this.playerXPos += 1;\r\n            }\r\n        }\r\n        else {\r\n            System.out.println(\"Input not recognized\");\r\n        }\r\n    }\r\n\r\n    public void moveRight() {\r\n        int currentX = this.playerXPos;\r\n        int currentY = this.playerYPos;\r\n        rooms[this.playerXPos][this.playerYPos].setVisited();\r\n        this.playerXPos += 1;\r\n    }\r\n\r\n    public void moveLeft() {\r\n        int currentX = this.playerXPos;\r\n        int currentY = this.playerYPos;\r\n        rooms[this.playerXPos][this.playerYPos].setVisited();\r\n        this.playerXPos -= 1;\r\n    }\r\n\r\n    public void moveUp() {\r\n        int currentX = this.playerXPos;\r\n        int currentY = this.playerYPos;\r\n        rooms[this.playerXPos][this.playerYPos].setVisited();\r\n        this.playerYPos += 1;\r\n    }\r\n\r\n    public void moveDown() {\r\n        int currentX = this.playerXPos;\r\n        int currentY = this.playerYPos;\r\n        rooms[this.playerXPos][this.playerYPos].setVisited();\r\n        this.playerYPos -= 1;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DungeonMap.java b/src/DungeonMap.java
+--- a/src/DungeonMap.java	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/src/DungeonMap.java	(date 1619666323782)
+@@ -115,33 +115,6 @@
+         else {
+             System.out.println("Input not recognized");
+         }
+-    }
+-
+-    public void moveRight() {
+-        int currentX = this.playerXPos;
+-        int currentY = this.playerYPos;
+-        rooms[this.playerXPos][this.playerYPos].setVisited();
+-        this.playerXPos += 1;
+-    }
+-
+-    public void moveLeft() {
+-        int currentX = this.playerXPos;
+-        int currentY = this.playerYPos;
+-        rooms[this.playerXPos][this.playerYPos].setVisited();
+-        this.playerXPos -= 1;
+-    }
+-
+-    public void moveUp() {
+-        int currentX = this.playerXPos;
+-        int currentY = this.playerYPos;
+-        rooms[this.playerXPos][this.playerYPos].setVisited();
+-        this.playerYPos += 1;
+-    }
+-
+-    public void moveDown() {
+-        int currentX = this.playerXPos;
+-        int currentY = this.playerYPos;
+-        rooms[this.playerXPos][this.playerYPos].setVisited();
+-        this.playerYPos -= 1;
++        rooms[this.playerXPos][this.playerXPos].enter(this.player);
+     }
+ }
+\ No newline at end of file
+Index: src/Room.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Random;\r\nimport java.util.Scanner;\r\n\r\n/* Represents a Room in the Dungeon, where\r\nencounters with Monsters and Loot occur */\r\npublic class Room {\r\n    /* Indicates whether or not this Room\r\n    instance has been visited already */\r\n    private boolean visited;\r\n    private final int avgGoldperRoom;\r\n\r\n    public Room(int totalRooms) {\r\n        this.visited = false;\r\n        //This is how much gold per room will get you 100 gold if you get gold in 1/5 of the rooms\r\n        this.avgGoldperRoom = (100/(totalRooms/5));\r\n    }\r\n\r\n    /* Handles encounter logic when a Player\r\n    enters this Room. Includes combat resolution\r\n    and obtaining loot. */\r\n    public void enter(Player player) {\r\n        System.out.println(\"You open a door and move to the next room...\");\r\n        if(!this.visited) {\r\n            String encounter = randomEncounter();\r\n            if(encounter.equals(\"Monster\")) {\r\n                Monster monster = new Monster();\r\n                System.out.println(\"A \" + monster.getMonsterType() + \" has appeared!\");\r\n                fight(player, monster);\r\n            }\r\n            else if(encounter.equals(\"Loot\")) {\r\n                System.out.println(\"You have found gold!\");\r\n                Random random = new Random();\r\n                int goldDeviation = 3 - random.nextInt(6);\r\n                player.onLoot(goldDeviation + this.avgGoldperRoom);\r\n                System.out.println(\"You found \" + goldDeviation + this.avgGoldperRoom + \" gold. This gives you a total of \" + player.getPGold() + \" gold!\");\r\n            }\r\n            else {\r\n                System.out.println(\"You have found a healing elixir! \");\r\n                Random random = new Random();\r\n                player.onHeal(30);\r\n                System.out.println(\"You have gained 30 health! Your health is now: \" + player.getPHealth());\r\n            }\r\n        }\r\n        else {\r\n            System.out.print(\"You have visited this room before.\");\r\n        }\r\n\r\n    }\r\n\r\n    // Setup for new Rooms\r\n    public String randomEncounter()  {\r\n        Random random = new Random();\r\n        int randomNumber = random.nextInt(1);\r\n        if(randomNumber == 0) {\r\n            return \"Monster\";\r\n        }\r\n        else {\r\n            randomNumber = random.nextInt(1);\r\n            if (randomNumber == 0) {\r\n                return \"Loot\";\r\n            } else {\r\n                return \"Healing\";\r\n            }\r\n        }\r\n    }\r\n\r\n    // Fight sequence\r\n    public void fight(Player player, Monster monster) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(\"Would you like to run or fight the \" + monster.getMonsterType() + \" ? ([R] or [F])\");\r\n        String decision = scanner.nextLine();\r\n        if(decision.equalsIgnoreCase(\"r\")) {\r\n            monster.attack(player);\r\n        }\r\n        else if(decision.equalsIgnoreCase(\"f\")) {\r\n            //fight sequence\r\n            if(player.getPHealth() > 0 && monster.getMHealth() > 0) {\r\n                monster.attack(player);\r\n                System.out.println(\"----------\");\r\n                if(player.getPHealth() > 0) {\r\n                    player.attack(monster);\r\n                    fight(player, monster);\r\n                }\r\n            }\r\n        }\r\n        else {\r\n            System.out.print(\"Input not recognized, please try again.\");\r\n            this.fight(player, monster);\r\n        }\r\n    }\r\n\r\n\r\n    /* Accessor for the visited field */\r\n    public boolean hasVisited() {\r\n        return this.visited;\r\n    }\r\n\r\n    public void setVisited() {\r\n        this.visited = true;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Room.java b/src/Room.java
+--- a/src/Room.java	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/src/Room.java	(date 1619666204787)
+@@ -44,6 +44,7 @@
+         else {
+             System.out.print("You have visited this room before.");
+         }
++        this.setVisited();
+ 
+     }
+ 
+Index: src/DungeonGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\r\n\r\npublic class DungeonGame {\r\n    /* Reference to the DungeonMap the Player is in */\r\n    private DungeonMap map;\r\n\r\n    /* Reference to the Player in the dungeon */\r\n    private Player player;\r\n\r\n    /* Initializes the size of the dungeon */\r\n\tpublic DungeonGame(int rows, int columns) {\r\n\t    Player player1 = new Player();\r\n\t    this.player = player1;\r\n        this.map = new DungeonMap(10,10, this.player);\r\n\t}\r\n\t\r\n\t/* Main loop of the game, which handles\r\n\tnon-combat related user input. Continues\r\n\tuntil the Player either wins or loses. */\r\n    public void play() {\r\n        this.player.introScene();\r\n        while(this.player.getPHealth() > 0) {\r\n            this.map.print();\r\n            System.out.println(\"GP = \" + this.player.getPGold());\r\n            System.out.println(\"HP = \" + this.player.getPHealth());\r\n            Scanner scanner = new Scanner(System.in);\r\n            System.out.println(\"Select a door: [W] up, [S] down, [A] left, [D] right ==> \");\r\n            String direction = scanner.nextLine();\r\n            this.map.move(direction);\r\n        }\r\n\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DungeonGame.java b/src/DungeonGame.java
+--- a/src/DungeonGame.java	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/src/DungeonGame.java	(date 1619666080249)
+@@ -27,6 +27,7 @@
+             System.out.println("Select a door: [W] up, [S] down, [A] left, [D] right ==> ");
+             String direction = scanner.nextLine();
+             this.map.move(direction);
++
+         }
+ 
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"66c9bf19-063c-4ea0-809a-4bc831a64f64\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DefaultGradleProjectSettings\">\r\n    <option name=\"isMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileEditorManager\">\r\n    <leaf SIDE_TABS_SIZE_LIMIT_KEY=\"300\">\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Player.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"-119\">\r\n              <caret line=\"12\" selection-start-line=\"12\" selection-end-line=\"12\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Main.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"68\">\r\n              <caret line=\"4\" lean-forward=\"true\" selection-start-line=\"4\" selection-end-line=\"4\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"true\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Monster.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"396\">\r\n              <caret line=\"48\" column=\"26\" lean-forward=\"true\" selection-start-line=\"48\" selection-start-column=\"26\" selection-end-line=\"48\" selection-end-column=\"26\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/Room.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"161\">\r\n              <caret line=\"82\" column=\"17\" lean-forward=\"true\" selection-start-line=\"82\" selection-start-column=\"17\" selection-end-line=\"82\" selection-end-column=\"17\" />\r\n              <folding>\r\n                <element signature=\"imports\" expanded=\"true\" />\r\n                <element signature=\"e#3387#3388#0\" expanded=\"true\" />\r\n                <element signature=\"e#3422#3423#0\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/DungeonMap.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"-153\">\r\n              <caret column=\"2\" selection-start-column=\"2\" selection-end-column=\"2\" />\r\n              <folding>\r\n                <element signature=\"e#382#383#0\" expanded=\"true\" />\r\n                <element signature=\"e#420#421#0\" expanded=\"true\" />\r\n                <element signature=\"e#453#454#0\" expanded=\"true\" />\r\n                <element signature=\"e#491#492#0\" expanded=\"true\" />\r\n                <element signature=\"e#533#534#0\" expanded=\"true\" />\r\n                <element signature=\"e#571#572#0\" expanded=\"true\" />\r\n                <element signature=\"e#613#614#0\" expanded=\"true\" />\r\n                <element signature=\"e#651#652#0\" expanded=\"true\" />\r\n              </folding>\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n      <file pinned=\"false\" current-in-tab=\"false\">\r\n        <entry file=\"file://$PROJECT_DIR$/src/DungeonGame.java\">\r\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n            <state relative-caret-position=\"238\">\r\n              <caret line=\"14\" column=\"43\" lean-forward=\"true\" selection-start-line=\"14\" selection-start-column=\"43\" selection-end-line=\"14\" selection-end-column=\"43\" />\r\n            </state>\r\n          </provider>\r\n        </entry>\r\n      </file>\r\n    </leaf>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"hiddenUrls\">\r\n      <set>\r\n        <option value=\"https://github.com/ErikaTatiana/Game-of-Groans\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"IdeDocumentHistory\">\r\n    <option name=\"CHANGED_PATHS\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/src/Monster.java\" />\r\n        <option value=\"$PROJECT_DIR$/HW1.iml\" />\r\n        <option value=\"$PROJECT_DIR$/src/Player.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/DungeonMap.java\" />\r\n        <option value=\"$PROJECT_DIR$/src/Room.java\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectFrameBounds\" extendedState=\"6\">\r\n    <option name=\"x\" value=\"-12\" />\r\n    <option name=\"y\" value=\"-12\" />\r\n    <option name=\"width\" value=\"1944\" />\r\n    <option name=\"height\" value=\"1044\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1rpBEhyH0mViBhqPvIKwm2ZeeA7\" />\r\n  <component name=\"ProjectView\">\r\n    <navigator proportions=\"\" version=\"1\">\r\n      <foldersAlwaysOnTop value=\"true\" />\r\n    </navigator>\r\n    <panes>\r\n      <pane id=\"ProjectPane\">\r\n        <subPane>\r\n          <expand>\r\n            <path>\r\n              <item name=\"Game-of-Groans\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"Game-of-Groans\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n            <path>\r\n              <item name=\"Game-of-Groans\" type=\"b2602c69:ProjectViewProjectNode\" />\r\n              <item name=\"Game-of-Groans\" type=\"462c0819:PsiDirectoryNode\" />\r\n              <item name=\"src\" type=\"462c0819:PsiDirectoryNode\" />\r\n            </path>\r\n          </expand>\r\n          <select />\r\n        </subPane>\r\n      </pane>\r\n      <pane id=\"Scope\" />\r\n      <pane id=\"PackagesPane\" />\r\n    </panes>\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.0\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Game-of-Groans\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"66c9bf19-063c-4ea0-809a-4bc831a64f64\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1619575266044</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1619575266044</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Test\">\r\n      <created>1619663102088</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619663102088</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Test\">\r\n      <created>1619663186584</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619663186584</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Test\">\r\n      <created>1619663927733</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619663927733</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Test\">\r\n      <created>1619664461406</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619664461406</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Test\">\r\n      <created>1619665211161</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619665211161</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Test\">\r\n      <created>1619665223276</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1619665223276</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"ToolWindowManager\">\r\n    <frame x=\"-7\" y=\"-7\" width=\"1295\" height=\"695\" extended-state=\"6\" />\r\n    <editor active=\"true\" />\r\n    <layout>\r\n      <window_info active=\"true\" content_ui=\"combo\" id=\"Project\" order=\"0\" visible=\"true\" weight=\"0.12469636\" />\r\n      <window_info id=\"Structure\" order=\"1\" side_tool=\"true\" weight=\"0.25\" />\r\n      <window_info id=\"Image Layers\" order=\"2\" />\r\n      <window_info id=\"Designer\" order=\"3\" />\r\n      <window_info id=\"UI Designer\" order=\"4\" />\r\n      <window_info id=\"Capture Tool\" order=\"5\" />\r\n      <window_info id=\"Favorites\" order=\"6\" side_tool=\"true\" />\r\n      <window_info anchor=\"bottom\" id=\"Message\" order=\"0\" />\r\n      <window_info anchor=\"bottom\" id=\"Find\" order=\"1\" />\r\n      <window_info anchor=\"bottom\" id=\"Run\" order=\"2\" />\r\n      <window_info anchor=\"bottom\" id=\"Debug\" order=\"3\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"Cvs\" order=\"4\" weight=\"0.25\" />\r\n      <window_info anchor=\"bottom\" id=\"Inspection\" order=\"5\" weight=\"0.4\" />\r\n      <window_info anchor=\"bottom\" id=\"TODO\" order=\"6\" />\r\n      <window_info anchor=\"bottom\" id=\"Terminal\" order=\"7\" />\r\n      <window_info anchor=\"bottom\" id=\"Event Log\" order=\"8\" side_tool=\"true\" />\r\n      <window_info anchor=\"bottom\" id=\"Version Control\" order=\"9\" />\r\n      <window_info anchor=\"right\" id=\"Commander\" internal_type=\"SLIDING\" order=\"0\" type=\"SLIDING\" weight=\"0.4\" />\r\n      <window_info anchor=\"right\" id=\"Ant Build\" order=\"1\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" content_ui=\"combo\" id=\"Hierarchy\" order=\"2\" weight=\"0.25\" />\r\n      <window_info anchor=\"right\" id=\"Palette\" order=\"3\" />\r\n      <window_info anchor=\"right\" id=\"Maven\" order=\"4\" />\r\n      <window_info anchor=\"right\" id=\"Theme Preview\" order=\"5\" />\r\n      <window_info anchor=\"right\" id=\"Capture Analysis\" order=\"6\" />\r\n      <window_info anchor=\"right\" id=\"Palette&#9;\" order=\"7\" />\r\n    </layout>\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Test\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Test\" />\r\n  </component>\r\n  <component name=\"editorHistoryManager\">\r\n    <entry file=\"file://$PROJECT_DIR$/Game-of-Groans.iml\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/HW1.iml\" />\r\n    <entry file=\"file://$PROJECT_DIR$/.gitattributes\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\" />\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Room.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"161\">\r\n          <caret line=\"82\" column=\"17\" lean-forward=\"true\" selection-start-line=\"82\" selection-start-column=\"17\" selection-end-line=\"82\" selection-end-column=\"17\" />\r\n          <folding>\r\n            <element signature=\"imports\" expanded=\"true\" />\r\n            <element signature=\"e#3387#3388#0\" expanded=\"true\" />\r\n            <element signature=\"e#3422#3423#0\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/DungeonMap.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"-153\">\r\n          <caret column=\"2\" selection-start-column=\"2\" selection-end-column=\"2\" />\r\n          <folding>\r\n            <element signature=\"e#382#383#0\" expanded=\"true\" />\r\n            <element signature=\"e#420#421#0\" expanded=\"true\" />\r\n            <element signature=\"e#453#454#0\" expanded=\"true\" />\r\n            <element signature=\"e#491#492#0\" expanded=\"true\" />\r\n            <element signature=\"e#533#534#0\" expanded=\"true\" />\r\n            <element signature=\"e#571#572#0\" expanded=\"true\" />\r\n            <element signature=\"e#613#614#0\" expanded=\"true\" />\r\n            <element signature=\"e#651#652#0\" expanded=\"true\" />\r\n          </folding>\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/DungeonGame.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"238\">\r\n          <caret line=\"14\" column=\"43\" lean-forward=\"true\" selection-start-line=\"14\" selection-start-column=\"43\" selection-end-line=\"14\" selection-end-column=\"43\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Player.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"-119\">\r\n          <caret line=\"12\" selection-start-line=\"12\" selection-end-line=\"12\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Main.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"68\">\r\n          <caret line=\"4\" lean-forward=\"true\" selection-start-line=\"4\" selection-end-line=\"4\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n    <entry file=\"file://$PROJECT_DIR$/src/Monster.java\">\r\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\r\n        <state relative-caret-position=\"396\">\r\n          <caret line=\"48\" column=\"26\" lean-forward=\"true\" selection-start-line=\"48\" selection-start-column=\"26\" selection-end-line=\"48\" selection-end-column=\"26\" />\r\n        </state>\r\n      </provider>\r\n    </entry>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2eba61d9b837e427bc8d6e3872b7054f86bc9d91)
++++ b/.idea/workspace.xml	(date 1619666864343)
+@@ -1,7 +1,17 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="66c9bf19-063c-4ea0-809a-4bc831a64f64" name="Default Changelist" comment="" />
++    <list default="true" id="66c9bf19-063c-4ea0-809a-4bc831a64f64" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonGame.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/DungeonMap.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game-of-Groans/Room.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/DungeonGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonGame.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonMap.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -9,79 +19,6 @@
+   </component>
+   <component name="DefaultGradleProjectSettings">
+     <option name="isMigrated" value="true" />
+-  </component>
+-  <component name="FileEditorManager">
+-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/Player.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-119">
+-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="68">
+-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="true">
+-        <entry file="file://$PROJECT_DIR$/src/Monster.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="396">
+-              <caret line="48" column="26" lean-forward="true" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/Room.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="161">
+-              <caret line="82" column="17" lean-forward="true" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+-              <folding>
+-                <element signature="imports" expanded="true" />
+-                <element signature="e#3387#3388#0" expanded="true" />
+-                <element signature="e#3422#3423#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/DungeonMap.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-153">
+-              <caret column="2" selection-start-column="2" selection-end-column="2" />
+-              <folding>
+-                <element signature="e#382#383#0" expanded="true" />
+-                <element signature="e#420#421#0" expanded="true" />
+-                <element signature="e#453#454#0" expanded="true" />
+-                <element signature="e#491#492#0" expanded="true" />
+-                <element signature="e#533#534#0" expanded="true" />
+-                <element signature="e#571#572#0" expanded="true" />
+-                <element signature="e#613#614#0" expanded="true" />
+-                <element signature="e#651#652#0" expanded="true" />
+-              </folding>
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/DungeonGame.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="238">
+-              <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-    </leaf>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

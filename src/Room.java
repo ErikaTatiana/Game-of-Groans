@@ -42,7 +42,7 @@ public class Room {
             }
         }
         else {
-            System.out.println("You have visited this room before.");
+            System.out.println("You have visited this room before. ");
         }
         this.setVisited();
 
